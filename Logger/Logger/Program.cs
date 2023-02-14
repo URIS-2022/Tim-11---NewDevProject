@@ -7,6 +7,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<string>(builder.Configuration["awsSecretAccessKey"]);
+builder.Services.AddSingleton<string>(builder.Configuration["awsAccessKeyId"]);
+
+Logger.LoggerFactory.AddConfiguration(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
