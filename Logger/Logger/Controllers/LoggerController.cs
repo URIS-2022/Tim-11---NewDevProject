@@ -7,7 +7,7 @@ namespace Logger.Controllers
     [ApiController]
     public class LoggerController : ControllerBase
     {
-        Serilog.Core.Logger _logger;
+        private static Serilog.Core.Logger _logger;
 
         public LoggerController() 
         {
@@ -15,7 +15,7 @@ namespace Logger.Controllers
         }
 
         [HttpPost]
-        public async void Log([FromBody] LogRequestDto request)
+        public void Log([FromBody] LogRequestDto request)
         {
             if (request.IsError) 
             {

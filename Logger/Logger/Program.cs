@@ -1,3 +1,5 @@
+using Logger;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +13,10 @@ builder.Services.AddSingleton<string>(builder.Configuration["awsSecretAccessKey"
 builder.Services.AddSingleton<string>(builder.Configuration["awsAccessKeyId"]);
 
 Logger.LoggerFactory.AddConfiguration(builder.Configuration);
+
+builder.Services.AddSingleton(new EventConsumer(Logger.LoggerFactory.GetLoggerAsync()));
+
+EventConsumer.Setup();
 
 var app = builder.Build();
 
