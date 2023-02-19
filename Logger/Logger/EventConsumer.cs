@@ -22,8 +22,8 @@ namespace Logger
                     HostName = "localhost"
                 };
 
-                using var connection = factory.CreateConnection();
-                using var channel = connection.CreateModel();
+                var connection = factory.CreateConnection();
+                var channel = connection.CreateModel();
 
                 channel.QueueDeclare(queue: "logs",
                                      durable: false,
