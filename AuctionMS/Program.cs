@@ -21,6 +21,8 @@ builder.Services.AddDbContext<PublicBiddingContext>(options => options.UseSqlSer
     builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
 }));
 builder.Services.AddScoped<IPublicBiddingRepository, PublicBiddingRepository>();
+builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+builder.Services.AddScoped<IOfficialJournalRepository, OfficalJournalRepository>();
 
 var app = builder.Build();
 
